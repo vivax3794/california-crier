@@ -10,9 +10,7 @@ from . import constants
 
 class Bot(commands.Bot):
     def __init__(self):
-        super().__init__(
-                command_prefix=constants.PREFIX
-                )
+        super().__init__(command_prefix=constants.PREFIX)
         self.load_extensions()
         self.http_session = aiohttp.ClientSession()
 

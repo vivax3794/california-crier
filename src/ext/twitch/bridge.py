@@ -11,11 +11,11 @@ from ... import constants
 class TwitchBot(twitch_commands.Bot):
     def __init__(self, discord_cog: "DiscordCog"):
         super().__init__(
-                irc_token=constants.TWITCH_TOKEN,
-                initial_channels=[constants.TWITCH_CHANNEL],
-                nick="therealvivax",
-                prefix="asfnaosidjdosa"
-                )
+            irc_token=constants.TWITCH_TOKEN,
+            initial_channels=[constants.TWITCH_CHANNEL],
+            nick="therealvivax",
+            prefix="asfnaosidjdosa",
+        )
         self.discord_cog = discord_cog
         self.is_ready = False
 
@@ -23,7 +23,9 @@ class TwitchBot(twitch_commands.Bot):
         self.is_ready = True
 
     async def ready(self):
-        await self._ws.send_privmsg(constants.TWITCH_CHANNEL, "discord - twitch bridge online.")
+        await self._ws.send_privmsg(
+            constants.TWITCH_CHANNEL, "discord - twitch bridge online."
+        )
 
     async def on_discord_msg(self, author: str, msg: str):
         await self._ws.send_privmsg(constants.TWITCH_CHANNEL, f"{author}: {msg}")
@@ -66,7 +68,9 @@ class DiscordCog(discord_commands.Cog):
             self.webhook = webhooks[0]
         else:
             logger.warning("creating new webhook")
-            self.webhook = await self.channel.create_webhook(name="twitch", reason="twitch - discord bridge")
+            self.webhook = await self.channel.create_webhook(
+                name="twitch", reason="twitch - discord bridge"
+            )
 
     def cog_unload(self):
         logger.info("closing twitch")

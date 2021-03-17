@@ -4,6 +4,7 @@ from loguru import logger
 
 class Core(commands.Cog):
     """Core bot commands."""
+
     def __init__(self, bot):
         self.bot = bot
 
