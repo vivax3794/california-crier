@@ -38,6 +38,8 @@ class TwitchBot(twitch_commands.Bot):
 
 
 class DiscordCog(discord_commands.Cog):
+    """Twitch to Discord bridge"""
+
     def __init__(self, bot):
         self.bot = bot
 

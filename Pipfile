@@ -8,6 +8,9 @@ discord = "*"
 loguru = "*"
 twitchio = "*"
 aiohttp = {extras = ["speedups"], version = "*"}
+pandas = "*"
+matplotlib = "*"
+cogwatch = "*"
 
 [dev-packages]
 
